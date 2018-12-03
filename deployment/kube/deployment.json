@@ -1,0 +1,69 @@
+{
+	"apiVersion": "apps/v1",
+	"kind": "Deployment",
+	"metadata": {
+		"name": "serving-deployment",
+		"labels": {
+			"app": "model-serving"
+		}
+	},
+	"spec": {
+		"replicas": 1,
+		"selector": {
+			"matchLabels": {
+				"app": "model-serving"
+			}
+		},
+		"template": {
+			"metadata": {
+				"annotations": {
+					"sidecar.istio.io/inject": "true"
+				},
+				"labels": {
+					"app": "model-serving",
+					"version": "v1"
+				}
+			},
+			"spec": {
+				"containers": [
+					{
+						"name": "pytorch-serving",
+						"image": "tomcli/gender-serving:0.1",
+						"env": [
+							{
+								"name": "TRAINING_ID",
+								"value": "training-tIYQkhYiR"
+							},
+							{
+								"name": "BUCKET_ENDPOINT_URL",
+								"value": "https://s3-api.us-geo.objectstorage.softlayer.net"
+							},
+							{
+								"name": "BUCKET_NAME",
+								"value": "gender-result"
+							},
+							{
+								"name": "BUCKET_KEY",
+								"value": "KEY"
+							},
+							{
+								"name": "BUCKET_SECRET",
+								"value": "Password"
+							},
+							{
+								"name": "MODEL_FILE_NAME",
+								"value": "model.pt"
+							}
+						],
+						"ports": [
+							{
+								"containerPort": 8080,
+								"name": "serving"
+							}
+						]
+					}
+				]
+			}
+		}
+	}
+}

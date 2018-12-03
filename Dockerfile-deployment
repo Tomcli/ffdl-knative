@@ -1,0 +1,10 @@
+FROM python:3.6-slim
+
+RUN pip install kubernetes Flask flask-cors
+
+ENV APP_HOME /app
+COPY deployment $APP_HOME
+WORKDIR $APP_HOME
+
+ENTRYPOINT ["python"]
+CMD ["app.py"]

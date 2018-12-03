@@ -1,0 +1,10 @@
+FROM pytorch/pytorch:latest
+
+RUN pip install Flask aif360 pandas boto3 flask-cors
+
+ENV APP_HOME /app
+COPY fairness $APP_HOME
+WORKDIR $APP_HOME
+
+ENTRYPOINT ["python"]
+CMD ["app.py"]

@@ -1,0 +1,10 @@
+FROM pytorch/pytorch:latest
+
+RUN pip install https://github.com/IBM/adversarial-robustness-toolbox/zipball/master Flask pandas boto3 flask-cors
+
+ENV APP_HOME /app
+COPY robustness $APP_HOME
+WORKDIR $APP_HOME
+
+ENTRYPOINT ["python"]
+CMD ["app.py"]

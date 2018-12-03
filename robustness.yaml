@@ -1,0 +1,16 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: robustness-python
+  namespace: default
+spec:
+  runLatest:
+    configuration:
+      revisionTemplate:
+        spec:
+          containerConcurrency: 0
+          container:
+            image: docker.io/tomcli/robustness-test8
+            env:
+            - name: TARGET # The environment variable printed out by the sample app
+              value: "Go Sample v1"

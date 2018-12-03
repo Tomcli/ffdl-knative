@@ -1,0 +1,14 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: deployment-python
+  namespace: default
+spec:
+  runLatest:
+    configuration:
+      revisionTemplate:
+        spec:
+          serviceAccountName: serving
+          containerConcurrency: 0
+          container:
+            image: docker.io/tomcli/serving-deployment13
