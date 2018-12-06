@@ -1,0 +1,49 @@
+{
+	"apiVersion": "serving.knative.dev/v1alpha1",
+	"kind": "Configuration",
+	"metadata": {
+		"name": "model-serving",
+		"namespace": "default"
+	},
+	"spec": {
+		"revisionTemplate": {
+			"metadata": {
+				"labels": {
+					"knative.dev/type": "container"
+				}
+			},
+			"spec": {
+				"container": {
+					"image": "docker.io/tomcli/gender-serving:0.1",
+					"imagePullPolicy": "IfNotPresent",
+					"env": [
+						{
+							"name": "TRAINING_ID",
+							"value": "training-4tFkz2LmR"
+						},
+						{
+							"name": "BUCKET_ENDPOINT_URL",
+							"value": "https://s3-api.us-geo.objectstorage.softlayer.net"
+						},
+						{
+							"name": "BUCKET_NAME",
+							"value": "gender-result"
+						},
+						{
+							"name": "BUCKET_KEY",
+							"value": "key"
+						},
+						{
+							"name": "BUCKET_SECRET",
+							"value": "password"
+						},
+						{
+							"name": "MODEL_FILE_NAME",
+							"value": "model.pt"
+						}
+					]
+				}
+			}
+		}
+	}
+}
