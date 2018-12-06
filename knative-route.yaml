@@ -1,0 +1,11 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Route
+metadata:
+  name: knative-demo
+  namespace: default
+spec:
+  traffic:
+    - revisionName: model-serving-00001
+      percent: 90
+    - revisionName: model-serving-00002
+      percent: 10
