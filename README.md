@@ -4,7 +4,7 @@
 1. Have a Kubernetes Cluster that has [KNative](https://github.com/knative/docs/blob/master/install/README.md) and [FfDL](https://github.com/IBM/FfDL) installed.
 2. Following the [gender-classification-ffdl-example](gender-classification-ffdl-example) to train a gender classification model on FfDL.
 
-## Step
+## Steps
 1. Once you have KNative installed, run the following commands to add the istio egress rules and RBAC service account.
 ```shell
 kubectl apply -f demo-istio-setup
@@ -22,8 +22,8 @@ kubectl apply -f fairness.yaml -f robustness.yaml -f deployment.yaml
   ```
 
 3. Go to the FfDL GUI page and enter the pipeline page of one of your trained model. Click on the Robustness check, Fairness check, or deploy model on Kubernetes to trigger the one of the pipeline components.
-
-  Then you should see the pipeline component pod is scale from 0 to 1. 
+  ![FFDL](archive/image/FFDL.png)
+  Then you should see the pipeline component pod is scale from 0 to 1.
 
 4. Now, make sure you serve your 2 of your models and markdown the revision name of each served model. Let's apply the KNative route rules to split the traffic between our 2 models
 ```shell
