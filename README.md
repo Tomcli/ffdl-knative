@@ -22,7 +22,7 @@ kubectl apply -f fairness.yaml -f robustness.yaml -f deployment.yaml
   ```
 
 3. Go to the FfDL GUI page and enter the pipeline page of one of your trained model. Click on the Robustness check, Fairness check, or deploy model on Kubernetes to trigger the one of the pipeline components.
-  ![FFDL](archive/image/FFDL.png)
+  ![FFDL](archive/images/FFDL.png)
   Then you should see the pipeline component pod is scale from 0 to 1.
 
 4. Now, make sure you serve your 2 of your models and markdown the revision name of each served model. Let's apply the KNative route rules to split the traffic between our 2 models
