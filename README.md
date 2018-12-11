@@ -63,6 +63,10 @@ spec:
   kubectl edit cm config-domain --namespace knative-serving
   ```
 
+  At this moment kiali shows the following view of our knative deployment
+
+  ![kiali](archive/images/kiali.png)
+
 3. Go to the FfDL GUI page and enter the pipeline page of one of your trained model. Click on the Robustness check, Fairness check, or deploy model on Kubernetes to trigger the one of the pipeline components.
 
   ![FFDL](archive/images/FFDL.png)
