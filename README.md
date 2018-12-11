@@ -74,6 +74,21 @@ spec:
 ```shell
 kubectl apply -f knative-route.yaml
 ```
+In this yaml, we are sending 90% of traffic to Model version v1, and rest of it to v2.
+
+```yaml
+apiVersion: serving.knative.dev/v1alpha1
+kind: Route
+metadata:
+  name: knative-demo
+  namespace: default
+spec:
+  traffic:
+    - revisionName: model-serving-00001
+      percent: 90
+    - revisionName: model-serving-00002
+      percent: 10
+```
 
 5. After you have every component ready to function, you can also tie them in a pipeline using Argo workflow orchestrator
 
