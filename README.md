@@ -24,6 +24,39 @@ kubectl apply -f demo-istio-setup
 kubectl apply -f https://raw.githubusercontent.com/knative/build-templates/master/kaniko/kaniko.yaml
 kubectl apply -f fairness.yaml -f robustness.yaml -f deployment.yaml
 ```
+Looking at for e.g. at fairness.yaml, it pulls the source code and uses DOCKERFILE to build the image
+
+```yaml
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: fairness-python
+  namespace: default
+spec:
+  runLatest:
+    configuration:
+      build:
+        apiVersion: build.knative.dev/v1alpha1
+        kind: Build
+        spec:
+          serviceAccountName: build-bot
+          source:
+            git:
+              url: https://github.com/Tomcli/ffdl-knative
+              revision: master
+          template:
+            name: kaniko
+            arguments:
+            - name: IMAGE
+              value: docker.io/tomcli/fairness-knative
+            - name: DOCKERFILE
+              value: ./Dockerfile-fairness
+      revisionTemplate:
+        spec:
+          containerConcurrency: 0
+          container:
+            image: docker.io/tomcli/fairness-knative
+```
 
   Also, you might want to [configure your KNative service with custom domain](https://github.com/knative/docs/blob/master/serving/using-a-custom-domain.md), so you can easily plugin with the FfDL GUI
   ```shell
