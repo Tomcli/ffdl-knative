@@ -66,7 +66,11 @@ spec:
 3. Go to the FfDL GUI page and enter the pipeline page of one of your trained model. Click on the Robustness check, Fairness check, or deploy model on Kubernetes to trigger the one of the pipeline components.
 
   ![FFDL](archive/images/FFDL.png)
-  Then you should see the pipeline component pod scales from 0 to 1. After all the tests are completed, you should be able to see the results of running all the steps in the pipeline.
+  Then you should see the pipeline component pod scales from 0 to 1. 
+
+ ![watch](archive/images/watch.png)
+
+  After all the tests are completed, you should be able to see the results of running all the steps in the pipeline.
 
   ![pipeline](archive/images/pipeline.png)
 
