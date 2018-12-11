@@ -98,6 +98,10 @@ spec:
       percent: 10
 ```
 
+When we look at Kiali at this point in time, this is how Kiali will look like
+
+![endkiali](archive/images/endkiali.png)
+
 5. After you have every component ready to function, you can also tie them in a pipeline using Argo workflow orchestrator
 
  ![argo](archive/images/argo.png)
