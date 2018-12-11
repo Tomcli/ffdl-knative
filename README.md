@@ -58,6 +58,20 @@ spec:
             image: docker.io/tomcli/fairness-knative
 ```
 
+  Then, you should able to see how knative build and deploy the revision
+  ```shell
+  $ kubectl get pods --watch
+  fairness-python-00001-86rxf     0/1     Init:2/3          0     19s
+  fairness-python-00001-86rxf     0/1     PodInitializing   0     3m27s
+  fairness-python-00001-86rxf     0/1     Completed         0     3m28s
+  fairness-python-00001-deployment-87587f658-gs5tr   0/3   Pending   0     0s
+  fairness-python-00001-deployment-87587f658-gs5tr   0/3   Pending   0     0s
+  fairness-python-00001-deployment-87587f658-gs5tr   0/3   Init:0/1  0     0s
+  fairness-python-00001-deployment-87587f658-gs5tr   0/3   PodInitializing   0     1s
+  fairness-python-00001-deployment-87587f658-gs5tr   2/3   Running   0     13s
+  fairness-python-00001-deployment-87587f658-gs5tr   3/3   Running   0     14s
+  ```
+
   Also, you might want to [configure your KNative service with custom domain](https://github.com/knative/docs/blob/master/serving/using-a-custom-domain.md), so you can easily plugin with the FfDL GUI
   ```shell
   kubectl edit cm config-domain --namespace knative-serving
