@@ -24,7 +24,7 @@ kubectl apply -f demo-istio-setup
 kubectl apply -f https://raw.githubusercontent.com/knative/build-templates/master/kaniko/kaniko.yaml
 kubectl apply -f fairness.yaml -f robustness.yaml -f deployment.yaml
 ```
-Looking at for e.g. at fairness.yaml, it pulls the source code and uses DOCKERFILE to build the image
+Looking at for e.g. at fairness.yaml, it pulls the source code and uses DOCKERFILE to build the image. The yaml also creates a Knative service for AI Fairness 360
 
 ```yaml
 apiVersion: serving.knative.dev/v1alpha1
