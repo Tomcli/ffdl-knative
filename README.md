@@ -3,7 +3,7 @@
 This is a Knative AI Platform demo as given at KubeCon. It walks you through on what Knative has to
 offer:
 
-1. It builds AI Fairness 360 (AIF360) and Adversarial Robustness Toolobox (ART) containers through Knative's Build component 
+1. It builds [AI Fairness 360 (AIF360)](https://github.com/IBM/AIF360) and [Adversarial Robustness Toolobox (ART)]() containers through Knative's Build component 
 2. The built image is then deployed as a Knative Service, which means it scales automatically based on incoming requests, and scales down to zero if there is no traffic
 3. We'll roll out a new version via a canary release.
 4. The traffic will be split between the two version for A/B testing
