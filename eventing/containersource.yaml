@@ -1,0 +1,18 @@
+apiVersion: sources.eventing.knative.dev/v1alpha1
+kind: ContainerSource
+metadata:
+  name: pipeline-event-source
+spec:
+  image: docker.io/tomcli/eventing-source:0.5
+  args:
+   - 'app.py'
+   - '--aws_endpoint_url=https://s3-api.us-geo.objectstorage.softlayer.net'
+   - '--training_results_bucket=xxxxxx'
+   - '--experiment=model-serving'
+   - '--aws_access_key_id=xxxxx'
+   - '--aws_secret_access_key=xxxxx'
+   - '--model_id=training-xxxxxx'
+  sink:
+    apiVersion: eventing.knative.dev/v1alpha1
+    kind: Channel
+    name: pipelinechannel
